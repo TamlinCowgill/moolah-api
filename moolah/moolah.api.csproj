@@ -3,6 +3,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <AWSProjectType>Lambda</AWSProjectType>
+    <AssemblyName>moolah.api</AssemblyName>
+    <RootNamespace>Moolah.Api</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="AWSSDK.Core" Version="3.5.1.30" />

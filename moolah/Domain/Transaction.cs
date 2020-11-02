@@ -1,18 +1,19 @@
 ﻿using System;
 using Amazon.DynamoDBv2.DataModel;
 
-namespace moolah.Domain
+namespace Moolah.Api.Domain
 {
-    [DynamoDBTable("Users")]
+    [DynamoDBTable("moolah-transactions")]
     public class Transaction
     {
-        public int Id { get; set; }
+        [DynamoDBHashKey("id")] public int AccountId { get; set; }
+        [DynamoDBRangeKey("id")] public string Id { get; set; } = Guid.NewGuid().ToString();
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }
-        public int AccountId { get; set; }
-        public int UserId { get; set; }
         public string Type { get; set; }
         public string Reference { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateUpdated { get; set; }
     }
 }

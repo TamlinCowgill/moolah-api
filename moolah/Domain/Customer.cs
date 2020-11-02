@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using Amazon.DynamoDBv2.DataModel;
 
-namespace moolah.Domain
+namespace Moolah.Api.Domain
 {
-    [DynamoDBTable("Users")]
-    public class User
+    [DynamoDBTable("moolah-users")]
+    public class Customer
     {
         [DynamoDBHashKey("id")] public string Id { get; set; } = Guid.NewGuid().ToString();
 
@@ -13,5 +13,6 @@ namespace moolah.Domain
         public List<Account> Accounts { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
+        public DateTime DateOfBirth { get; set; }
     }
 }
