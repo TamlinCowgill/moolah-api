@@ -6,9 +6,9 @@ namespace Moolah.Api.Services
 {
     public interface ICustomerService
     {
-        Task<IEnumerable<Customer>> GetAll();
-        Task<Customer> GetCustomer(string id);
-        Task<Customer> CreateCustomer(Customer customer);
-        Task<Customer> UpdateCustomer(Customer customer);
+        IEnumerable<Customer> GetAll();
+        Customer GetCustomer(string id);
+        Customer CreateCustomer(Customer customer);
+        Customer UpdateCustomer(Customer customer);
     }
 }

@@ -17,38 +17,34 @@ namespace Moolah.Api.Controllers
         [HttpGet]
         public IActionResult GetAllAccounts()
         {
-            var task = _accountService.GetAll();
-            return Ok(task.Result);
+            return Ok(_accountService.GetAll());
         }
 
         [HttpGet]
-        [Route("{id}")]
-        public IActionResult GetAccount(string id)
+        [Route("{accountId}")]
+        public IActionResult GetAccount(string accountId)
         {
-            var task = _accountService.GetAccount(id);
-            if (task.Result == null) return NotFound(nameof(id));
+            var account = _accountService.GetAccount(accountId);
+            if (account == null) return NotFound(nameof(accountId));
 
-            return Ok(task.Result);
+            return Ok(account);
         }
 
         [HttpPost]
-        public IActionResult AddAccount([FromBody] Account account)
+        public IActionResult CreateAccount([FromBody] Account account)
         {
-            var task = _accountService.CreateAccount(account);
-
-            return Ok(task.Result);
+            return Created($"api/accounts/{account.AccountId}", _accountService.CreateAccount(account));
         }
 
-        [HttpPost]
-        [Route("{id}")]
-        public IActionResult UpdateAccount(string id, [FromBody] Account account)
+        [HttpPut, HttpPatch]
+        [Route("{accountId}")]
+        public IActionResult UpdateAccount(string accountId, [FromBody] Account account)
         {
             if (account == null) return BadRequest(nameof(account));
-            if (id != account.Id) return BadRequest(nameof(id));
+            if (string.IsNullOrWhiteSpace(accountId)) return BadRequest(nameof(accountId));
+            if (accountId != account.AccountId) return BadRequest(nameof(accountId));
 
-            var task = _accountService.UpdateAccount(account);
-
-            return Ok(task.Result);
+            return Ok(_accountService.UpdateAccount(account));
         }
     }
 }

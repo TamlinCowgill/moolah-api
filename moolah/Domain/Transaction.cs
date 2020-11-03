@@ -6,8 +6,9 @@ namespace Moolah.Api.Domain
     [DynamoDBTable("moolah-transactions")]
     public class Transaction
     {
-        [DynamoDBHashKey("id")] public int AccountId { get; set; }
-        [DynamoDBRangeKey("id")] public string Id { get; set; } = Guid.NewGuid().ToString();
+        [DynamoDBHashKey("transaction-id")]
+        public string TransactionId { get; set; }
+        public string AccountId { get; set; }
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }

@@ -6,9 +6,10 @@ namespace Moolah.Api.Services
 {
     public interface IAccountService
     {
-        Task<IEnumerable<Account>> GetAll();
-        Task<Account> GetAccount(string id);
-        Task<Account> CreateAccount(Account account);
-        Task<Account> UpdateAccount(Account account);
+        IEnumerable<Account> GetAll();
+        Account GetAccount(string id);
+        Account CreateAccount(Account account);
+        Account UpdateAccount(Account account);
+        IEnumerable<Account> GetAccountsForCustomerId(string customerId);
     }
 }

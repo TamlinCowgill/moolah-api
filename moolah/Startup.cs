@@ -35,6 +35,7 @@ namespace Moolah.Api
 
             services.AddSingleton<IDynamoDBContext, DynamoDBContext>();
             services.AddSingleton<ICustomerService, CustomerService>();
+            services.AddSingleton<IAccountService, AccountService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline

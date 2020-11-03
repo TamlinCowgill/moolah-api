@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Amazon.DynamoDBv2.DataModel;
+using Moolah.Api.Controllers;
 using Moolah.Api.Domain;
 
 namespace Moolah.Api.Services
@@ -15,41 +16,55 @@ namespace Moolah.Api.Services
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<Customer>> GetAll()
+        public IEnumerable<Customer> GetAll()
         {
             var asyncSearch = _dbContext.ScanAsync<Customer>(new List<ScanCondition>());
-            var task = await asyncSearch.GetRemainingAsync();
+            var task = asyncSearch.GetRemainingAsync();
+            Task.WaitAll(task);
 
-            return Task.FromResult(task).Result;
+            return task.Result;
         }
 
-        public async Task<Customer> GetCustomer(string id)
+        public Customer GetCustomer(string id)
         {
-            var task = await _dbContext.LoadAsync<Customer>(id);
+            var task = _dbContext.LoadAsync<Customer>(id);
+            Task.WaitAll(task);
 
-            return Task.FromResult(task).Result;
+            return task.Result;
         }
 
-        public async Task<Customer> CreateCustomer(Customer customer)
+        public Customer CreateCustomer(Customer customer)
         {
             Validate(customer);
 
-            customer.Id = Guid.NewGuid().ToString();
+            if (string.IsNullOrWhiteSpace(customer.CustomerId))
+            {
+                customer.CustomerId = DbIdentity.NewId();
+            }
+            else
+            {
+                if (GetCustomer(customer.CustomerId) != null) throw new ArgumentException(nameof(customer.CustomerId));
+            }
+
             customer.DateCreated = DateTime.Now;
             customer.DateUpdated = DateTime.Now;
 
-            await _dbContext.SaveAsync(customer);
+            var task = _dbContext.SaveAsync(customer);
+            Task.WaitAll(task);
 
             return customer;
         }
 
-        public async Task<Customer> UpdateCustomer(Customer customer)
+        public Customer UpdateCustomer(Customer customer)
         {
             Validate(customer);
-            
+            if (GetCustomer(customer.CustomerId) == null) throw new ArgumentException(nameof(customer.CustomerId));
+
             customer.DateUpdated = DateTime.Now;
 
-            await _dbContext.SaveAsync(customer);
+            var task = _dbContext.SaveAsync(customer);
+
+            Task.WaitAll(task);
 
             return customer;
         }
