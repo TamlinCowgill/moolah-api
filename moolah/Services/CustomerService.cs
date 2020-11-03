@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Amazon.DynamoDBv2.DataModel;
 using Moolah.Api.Controllers;
 using Moolah.Api.Domain;
+using Moolah.Api.Helpers;
 
 namespace Moolah.Api.Services
 {

@@ -5,6 +5,7 @@ using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Moolah.Api.Controllers;
 using Moolah.Api.Domain;
+using Moolah.Api.Helpers;
 
 namespace Moolah.Api.Services
 {
