@@ -5,6 +5,7 @@ using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Moolah.Api.Controllers;
 using Moolah.Api.Domain;
+using Moolah.Api.Exceptions;
 using Moolah.Api.Helpers;
 
 namespace Moolah.Api.Services
@@ -56,7 +57,7 @@ namespace Moolah.Api.Services
             }
             else
             {
-                if (GetAccount(account.AccountId) != null) throw new ArgumentException(nameof(account.AccountId));
+                if (GetAccount(account.AccountId) != null) throw new AlreadyExistsException("account", "accountid", account.AccountId);
             }
 
             account.DateCreated = DateTime.Now;
@@ -82,9 +83,9 @@ namespace Moolah.Api.Services
         }
         private void Validate(Account account)
         {
-            if (account == null) throw new ArgumentNullException(nameof(account));
-            if (string.IsNullOrWhiteSpace(account.Name)) throw new ArgumentNullException(nameof(account.Name));
-            if (string.IsNullOrWhiteSpace(account.CustomerId)) throw new ArgumentNullException(nameof(account.CustomerId));
+            if (account == null) throw new BadRequestMissingValueException("account");
+            if (string.IsNullOrWhiteSpace(account.Name)) throw new BadRequestMissingValueException("account.name");
+            if (string.IsNullOrWhiteSpace(account.CustomerId)) throw new BadRequestMissingValueException("account.customerid");
         }
     }
 }

@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Moolah.Api.Domain;
+using Moolah.Api.Exceptions;
 using Moolah.Api.Services;
 
 namespace Moolah.Api.Controllers
 {
+    [TypeFilter(typeof(CustomExceptionFilter))]
     [Route("api/[controller]")]
     public class CustomersController : Controller
     {
@@ -28,7 +31,7 @@ namespace Moolah.Api.Controllers
         public IActionResult GetCustomer(string customerId)
         {
             var customer = _customerService.GetCustomer(customerId);
-            if (customer == null) return NotFound(nameof(customerId));
+            if (customer == null) throw new NotFoundException("customer", "customerid", customerId);
 
             return Ok(customer);
         }
@@ -60,10 +63,11 @@ namespace Moolah.Api.Controllers
         [Route("{customerId}/accounts")]
         public IActionResult CreateCustomerAccount(string customerId, [FromBody] Account account)
         {
+            if (account == null) throw new BadRequestMissingValueException("account");
+            if (account.CustomerId != customerId) throw new BadRequestInvalidValueException("customerId");
+
             var customer = _customerService.GetCustomer(customerId);
-            if (customer == null) return NotFound(nameof(customerId));
-            if (account == null) return BadRequest(nameof(account));
-            if (account.CustomerId != customerId) return BadRequest(nameof(account.CustomerId));
+            if (customer == null) throw new NotFoundException("customer", "customerid", customerId);
 
             return Created($"api/customers/{customerId}/accounts/{account.AccountId}", _accountService.CreateAccount(account));
         }

@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Moolah.Api.Domain;
+using Moolah.Api.Exceptions;
 using Moolah.Api.Services;
 
 namespace Moolah.Api.Controllers
 {
+    [TypeFilter(typeof(CustomExceptionFilter))]
     [Route("api/[controller]")]
     public class AccountsController : Controller
     {
@@ -40,10 +42,6 @@ namespace Moolah.Api.Controllers
         [Route("{accountId}")]
         public IActionResult UpdateAccount(string accountId, [FromBody] Account account)
         {
-            if (account == null) return BadRequest(nameof(account));
-            if (string.IsNullOrWhiteSpace(accountId)) return BadRequest(nameof(accountId));
-            if (accountId != account.AccountId) return BadRequest(nameof(accountId));
-
             return Ok(_accountService.UpdateAccount(account));
         }
     }

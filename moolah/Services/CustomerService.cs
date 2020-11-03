@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Amazon.DynamoDBv2.DataModel;
 using Moolah.Api.Controllers;
 using Moolah.Api.Domain;
+using Moolah.Api.Exceptions;
 using Moolah.Api.Helpers;
 
 namespace Moolah.Api.Services
@@ -44,7 +45,7 @@ namespace Moolah.Api.Services
             }
             else
             {
-                if (GetCustomer(customer.CustomerId) != null) throw new ArgumentException(nameof(customer.CustomerId));
+                if (GetCustomer(customer.CustomerId) != null) throw new AlreadyExistsException(nameof(customer), nameof(customer.CustomerId), customer.CustomerId);
             }
 
             customer.DateCreated = DateTime.Now;
@@ -59,7 +60,7 @@ namespace Moolah.Api.Services
         public Customer UpdateCustomer(Customer customer)
         {
             Validate(customer);
-            if (GetCustomer(customer.CustomerId) == null) throw new ArgumentException(nameof(customer.CustomerId));
+            if (GetCustomer(customer.CustomerId) == null) throw new AlreadyExistsException(nameof(customer), nameof(customer.CustomerId), customer.CustomerId);
 
             customer.DateUpdated = DateTime.Now;
 
@@ -72,8 +73,8 @@ namespace Moolah.Api.Services
 
         private void Validate(Customer customer)
         {
-            if (customer == null) throw new ArgumentNullException(nameof(customer));
-            if (string.IsNullOrWhiteSpace(customer.Name)) throw new ArgumentNullException(nameof(customer.Name));
+            if (customer == null) throw new BadRequestMissingValueException("customer");
+            if (string.IsNullOrWhiteSpace(customer.Name)) throw new BadRequestInvalidValueException("customer.Name");
         }
     }
 }
