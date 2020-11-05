@@ -20,13 +20,13 @@ namespace Moolah.Api.Controllers
             _accountService = accountService;
         }
 
-        [HttpGet(Name = "ListCustomerRoute")]
+        [HttpGet]
         public IActionResult GetAllCustomers()
         {
             return Ok(_customerService.GetAll());
         }
 
-        [HttpGet("{customerId}", Name = "GetCustomerRoute")]
+        [HttpGet("{customerId}")]
         public IActionResult GetCustomer(string customerId)
         {
             var customer = _customerService.GetCustomer(customerId);
@@ -35,13 +35,13 @@ namespace Moolah.Api.Controllers
             return Ok(customer);
         }
 
-        [HttpPost(Name = "CreateCustomerRoute")]
+        [HttpPost]
         public IActionResult CreateCustomer([FromBody] Customer customer)
         {
             return Created($"api/customers/{customer.CustomerId}", _customerService.CreateCustomer(customer));
         }
 
-        [HttpPut("{customerId}", Name = "UpdateCustomerRoute")]
+        [HttpPut("{customerId}")]
         public IActionResult UpdateCustomer(string customerId, [FromBody] Customer customer)
         {
             if (customer == null) return BadRequest(nameof(customer));
@@ -50,7 +50,7 @@ namespace Moolah.Api.Controllers
             return Ok(_customerService.UpdateCustomer(customer));
         }
 
-        [HttpPatch("{customerId}", Name = "PatchCustomerRoute")]
+        [HttpPatch("{customerId}")]
         public IActionResult PatchCustomer(string customerId, [FromBody] JsonPatchDocument<Customer> patchData)
         {
             var customer = _customerService.GetCustomer(customerId);
@@ -61,13 +61,13 @@ namespace Moolah.Api.Controllers
             return Ok(_customerService.UpdateCustomer(customer));
         }
 
-        [HttpGet("{customerId}/accounts", Name = "ListCustomerAccountRoute")]
+        [HttpGet("{customerId}/accounts")]
         public IActionResult ListAccounts(string customerId)
         {
             return Ok(_accountService.GetAccountsForCustomerId(customerId));
         }
 
-        [HttpPost("{customerId}/accounts", Name = "CreateCustomerAccountRoute")]
+        [HttpPost("{customerId}/accounts")]
         public IActionResult CreateCustomerAccount(string customerId, [FromBody] Account account)
         {
             if (account == null) return BadRequest();

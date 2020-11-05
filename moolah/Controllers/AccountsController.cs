@@ -12,18 +12,20 @@ namespace Moolah.Api.Controllers
     public class AccountsController : Controller
     {
         private readonly IAccountService _accountService;
-        public AccountsController(IAccountService accountService)
+        private readonly ITransactionService _transactionService;
+        public AccountsController(IAccountService accountService, ITransactionService transactionService)
         {
             _accountService = accountService;
+            _transactionService = transactionService;
         }
 
-        [HttpGet(Name = "ListAccountRoute")]
+        [HttpGet]
         public IActionResult GetAllAccounts()
         {
             return Ok(_accountService.GetAll());
         }
 
-        [HttpGet("{accountId}", Name = "GetAccountRoute")]
+        [HttpGet("{accountId}")]
         public IActionResult GetAccount(string accountId)
         {
             var account = _accountService.GetAccount(accountId);
@@ -32,13 +34,13 @@ namespace Moolah.Api.Controllers
             return Ok(account);
         }
 
-        [HttpPost(Name = "CreateAccountRoute")]
+        [HttpPost]
         public IActionResult CreateAccount([FromBody] Account account)
         {
             return Created($"api/accounts/{account.AccountId}", _accountService.CreateAccount(account));
         }
 
-        [HttpPut("{accountId}", Name = "UpdateAccountRoute")]
+        [HttpPut("{accountId}")]
         public IActionResult UpdateAccount(string accountId, [FromBody] Account account)
         {
             if (account == null) throw new BadRequestMissingValueException("account");
@@ -47,7 +49,7 @@ namespace Moolah.Api.Controllers
             return Ok(_accountService.UpdateAccount(account));
         }
 
-        [HttpPatch("{accountId}", Name = "PatchAccountRoute")]
+        [HttpPatch("{accountId}")]
         public IActionResult PatchAccount(string accountId, [FromBody] JsonPatchDocument<Account> patchData)
         {
             var account = _accountService.GetAccount(accountId);
@@ -56,6 +58,12 @@ namespace Moolah.Api.Controllers
             patchData.ApplyTo(account, ModelState);
 
             return Ok(_accountService.UpdateAccount(account));
+        }
+
+        [HttpGet("{accountId}/transactions")]
+        public IActionResult ListTransactions(string accountId)
+        {
+            return Ok(_transactionService.GetTransactionForAccount(accountId));
         }
     }
 }
