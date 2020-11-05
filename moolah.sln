@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.api", "moolah\moolah.api.csproj", "{01FEDE8A-A4E7-405E-B610-458CDBA4557C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "moolah.api.common", "moolah.api.common\moolah.api.common.csproj", "{9730B556-2F78-417D-BAE3-01F02B126185}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{01FEDE8A-A4E7-405E-B610-458CDBA4557C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01FEDE8A-A4E7-405E-B610-458CDBA4557C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01FEDE8A-A4E7-405E-B610-458CDBA4557C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9730B556-2F78-417D-BAE3-01F02B126185}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9730B556-2F78-417D-BAE3-01F02B126185}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9730B556-2F78-417D-BAE3-01F02B126185}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9730B556-2F78-417D-BAE3-01F02B126185}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
