@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Amazon.DynamoDBv2.DataModel;
-using Moolah.Api.Controllers;
 using Moolah.Api.Domain;
 using Moolah.Api.Exceptions;
 using Moolah.Api.Helpers;

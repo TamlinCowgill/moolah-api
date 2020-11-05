@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.Extensions.Hosting;
 using Moolah.Api.Exceptions;
 
-namespace Moolah.Api.Controllers
+namespace Moolah.Api.Helpers
 {
     public class CustomExceptionFilter : IExceptionFilter
     {

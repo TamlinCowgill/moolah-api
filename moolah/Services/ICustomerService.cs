@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using Moolah.Api.Domain;
 
 namespace Moolah.Api.Services

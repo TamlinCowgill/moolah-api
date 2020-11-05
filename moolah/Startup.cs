@@ -11,8 +11,6 @@ namespace Moolah.Api
 {
     public class Startup
     {
-        public const string AppS3BucketKey = "AppS3Bucket";
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,10 +23,10 @@ namespace Moolah.Api
         {
             services.AddDefaultAWSOptions(Configuration.GetAWSOptions());
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
 
             // Add S3 and DynamoDB to the ASP.NET Core dependency injection framework.
-            services.AddAWSService<Amazon.S3.IAmazonS3>();
+            //services.AddAWSService<Amazon.S3.IAmazonS3>();
             services.AddAWSService<Amazon.DynamoDBv2.IAmazonDynamoDB>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);

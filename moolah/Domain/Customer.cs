@@ -4,14 +4,15 @@ using Amazon.DynamoDBv2.DataModel;
 
 namespace Moolah.Api.Domain
 {
-    [DynamoDBTable("moolah-customers")]
+    [DynamoDBTable("Moolah.Customers")]
     public class Customer
     {
-        [DynamoDBHashKey("customer-id")]
+        [DynamoDBHashKey()]
         public string CustomerId { get; set; }
         public string Name { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
         public DateTime DateOfBirth { get; set; }
+        public Dictionary<string, string> Tags { get; set; }
     }
 }

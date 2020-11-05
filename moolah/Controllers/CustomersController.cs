@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
 using Moolah.Api.Domain;
 using Moolah.Api.Exceptions;
+using Moolah.Api.Helpers;
 using Moolah.Api.Services;
 
 namespace Moolah.Api.Controllers
@@ -20,14 +20,13 @@ namespace Moolah.Api.Controllers
             _accountService = accountService;
         }
 
-        [HttpGet]
+        [HttpGet(Name = "ListCustomerRoute")]
         public IActionResult GetAllCustomers()
         {
             return Ok(_customerService.GetAll());
         }
 
-        [HttpGet]
-        [Route("{customerId}")]
+        [HttpGet("{customerId}", Name = "GetCustomerRoute")]
         public IActionResult GetCustomer(string customerId)
         {
             var customer = _customerService.GetCustomer(customerId);
@@ -36,14 +35,13 @@ namespace Moolah.Api.Controllers
             return Ok(customer);
         }
 
-        [HttpPost]
+        [HttpPost(Name = "CreateCustomerRoute")]
         public IActionResult CreateCustomer([FromBody] Customer customer)
         {
             return Created($"api/customers/{customer.CustomerId}", _customerService.CreateCustomer(customer));
         }
 
-        [HttpPut, HttpPatch]
-        [Route("{customerId}")]
+        [HttpPut("{customerId}", Name = "UpdateCustomerRoute")]
         public IActionResult UpdateCustomer(string customerId, [FromBody] Customer customer)
         {
             if (customer == null) return BadRequest(nameof(customer));
@@ -52,19 +50,28 @@ namespace Moolah.Api.Controllers
             return Ok(_customerService.UpdateCustomer(customer));
         }
 
-        [HttpGet]
-        [Route("{customerId}/accounts")]
-        public IActionResult GetCustomersAccounts(string customerId)
+        [HttpPatch("{customerId}", Name = "PatchCustomerRoute")]
+        public IActionResult PatchCustomer(string customerId, [FromBody] JsonPatchDocument<Customer> patchData)
+        {
+            var customer = _customerService.GetCustomer(customerId);
+            if (customer == null) return NotFound();
+
+            patchData.ApplyTo(customer, ModelState);
+
+            return Ok(_customerService.UpdateCustomer(customer));
+        }
+
+        [HttpGet("{customerId}/accounts", Name = "ListCustomerAccountRoute")]
+        public IActionResult ListAccounts(string customerId)
         {
             return Ok(_accountService.GetAccountsForCustomerId(customerId));
         }
 
-        [HttpPost]
-        [Route("{customerId}/accounts")]
+        [HttpPost("{customerId}/accounts", Name = "CreateCustomerAccountRoute")]
         public IActionResult CreateCustomerAccount(string customerId, [FromBody] Account account)
         {
-            if (account == null) throw new BadRequestMissingValueException("account");
-            if (account.CustomerId != customerId) throw new BadRequestInvalidValueException("customerId");
+            if (account == null) return BadRequest();
+            if (account.CustomerId != customerId) return BadRequest();
 
             var customer = _customerService.GetCustomer(customerId);
             if (customer == null) throw new NotFoundException("customer", "customerid", customerId);
