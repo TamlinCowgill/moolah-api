@@ -1,23 +1,21 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Moolah.Api.Domain;
-using Moolah.Api.Exceptions;
-using Moolah.Api.Helpers;
-using Moolah.Api.Services;
+using moolah.api.customer.Domain;
+using moolah.api.customer.Exceptions;
+using moolah.api.customer.Helpers;
+using moolah.api.customer.Services;
 
-namespace Moolah.Api.Controllers
+namespace moolah.api.customer.Controllers
 {
     [TypeFilter(typeof(CustomExceptionFilter))]
     [Route("api/[controller]")]
     public class CustomersController : Controller
     {
         private readonly ICustomerService _customerService;
-        private readonly IAccountService _accountService;
 
-        public CustomersController(ICustomerService customerService, IAccountService accountService)
+        public CustomersController(ICustomerService customerService)
         {
             _customerService = customerService;
-            _accountService = accountService;
         }
 
         [HttpGet]
@@ -64,19 +62,20 @@ namespace Moolah.Api.Controllers
         [HttpGet("{customerId}/accounts")]
         public IActionResult ListAccounts(string customerId)
         {
-            return Ok(_accountService.GetAccountsForCustomerId(customerId));
+            //return Ok(_accountService.GetAccountsForCustomerId(customerId));
+            return null;
         }
 
-        [HttpPost("{customerId}/accounts")]
-        public IActionResult CreateCustomerAccount(string customerId, [FromBody] Account account)
-        {
-            if (account == null) return BadRequest();
-            if (account.CustomerId != customerId) return BadRequest();
+        //[HttpPost("{customerId}/accounts")]
+        //public IActionResult CreateCustomerAccount(string customerId, [FromBody] Account account)
+        //{
+        //    if (account == null) return BadRequest();
+        //    if (account.CustomerId != customerId) return BadRequest();
 
-            var customer = _customerService.GetCustomer(customerId);
-            if (customer == null) throw new NotFoundException("customer", "customerid", customerId);
+        //    var customer = _customerService.GetCustomer(customerId);
+        //    if (customer == null) throw new NotFoundException("customer", "customerid", customerId);
 
-            return Created($"api/customers/{customerId}/accounts/{account.AccountId}", _accountService.CreateAccount(account));
-        }
+        //    return Created($"api/customers/{customerId}/accounts/{account.AccountId}", _accountService.CreateAccount(account));
+        //}
     }
 }

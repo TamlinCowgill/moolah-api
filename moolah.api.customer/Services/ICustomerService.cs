@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Moolah.Api.Domain;
+using moolah.api.customer.Domain;
 
-namespace Moolah.Api.Services
+namespace moolah.api.customer.Services
 {
     public interface ICustomerService
     {

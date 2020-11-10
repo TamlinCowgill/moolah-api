@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Amazon.DynamoDBv2.DataModel;
-using Moolah.Api.Domain;
-using Moolah.Api.Exceptions;
-using Moolah.Api.Helpers;
+using moolah.api.customer.Domain;
+using moolah.api.customer.Exceptions;
+using moolah.api.customer.Helpers;
 
-namespace Moolah.Api.Services
+namespace moolah.api.customer.Services
 {
     public class CustomerService : ICustomerService
     {

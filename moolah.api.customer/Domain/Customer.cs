@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Amazon.DynamoDBv2.DataModel;
 
-namespace Moolah.Api.Domain
+namespace moolah.api.customer.Domain
 {
     [DynamoDBTable("Moolah.Customers")]
     public class Customer
