@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.api.customer", "mool
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.api.account", "moolah.api.account\moolah.api.account.csproj", "{54966663-4568-405B-9B15-2BD5D1DD6425}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.api.transaction", "moolah.api.transaction\moolah.api.transaction.csproj", "{64BA9251-145F-46F3-BD77-E437486B0AFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{54966663-4568-405B-9B15-2BD5D1DD6425}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54966663-4568-405B-9B15-2BD5D1DD6425}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54966663-4568-405B-9B15-2BD5D1DD6425}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64BA9251-145F-46F3-BD77-E437486B0AFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64BA9251-145F-46F3-BD77-E437486B0AFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64BA9251-145F-46F3-BD77-E437486B0AFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64BA9251-145F-46F3-BD77-E437486B0AFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
