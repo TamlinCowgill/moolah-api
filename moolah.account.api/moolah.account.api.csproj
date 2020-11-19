@@ -20,4 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\moolah.common\moolah.common.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+  </ItemGroup>
 </Project>
