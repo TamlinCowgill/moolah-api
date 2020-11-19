@@ -11,6 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.customer.api", "mool
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.transaction.api", "moolah.transaction.api\moolah.transaction.api.csproj", "{84277B4E-78E8-4BC5-A47F-A30C83420653}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{664D159C-3676-45E4-A120-BC982E1AB72B}"
+	ProjectSection(SolutionItems) = preProject
+		buildspec.yml = buildspec.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
