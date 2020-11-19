@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.api.customer", "moolah.api.customer\moolah.api.customer.csproj", "{905F7BB0-ADA1-4B9B-B993-883E7387F370}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.api.account", "moolah.api.account\moolah.api.account.csproj", "{54966663-4568-405B-9B15-2BD5D1DD6425}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.api.transaction", "moolah.api.transaction\moolah.api.transaction.csproj", "{64BA9251-145F-46F3-BD77-E437486B0AFC}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.common", "moolah.common\moolah.common.csproj", "{A18740DB-FFC5-47C0-9841-7D43F9CE8552}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.account.api", "moolah.account.api\moolah.account.api.csproj", "{31E3FE64-90DF-48DD-81A5-A35FB20B0793}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.customer.api", "moolah.customer.api\moolah.customer.api.csproj", "{3BE9E917-2A65-446A-BDE0-E3952BA42BB9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.transaction.api", "moolah.transaction.api\moolah.transaction.api.csproj", "{84277B4E-78E8-4BC5-A47F-A30C83420653}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,22 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{905F7BB0-ADA1-4B9B-B993-883E7387F370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{905F7BB0-ADA1-4B9B-B993-883E7387F370}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{905F7BB0-ADA1-4B9B-B993-883E7387F370}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{905F7BB0-ADA1-4B9B-B993-883E7387F370}.Release|Any CPU.Build.0 = Release|Any CPU
-		{54966663-4568-405B-9B15-2BD5D1DD6425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{54966663-4568-405B-9B15-2BD5D1DD6425}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{54966663-4568-405B-9B15-2BD5D1DD6425}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{54966663-4568-405B-9B15-2BD5D1DD6425}.Release|Any CPU.Build.0 = Release|Any CPU
-		{64BA9251-145F-46F3-BD77-E437486B0AFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64BA9251-145F-46F3-BD77-E437486B0AFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64BA9251-145F-46F3-BD77-E437486B0AFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64BA9251-145F-46F3-BD77-E437486B0AFC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A18740DB-FFC5-47C0-9841-7D43F9CE8552}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A18740DB-FFC5-47C0-9841-7D43F9CE8552}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A18740DB-FFC5-47C0-9841-7D43F9CE8552}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A18740DB-FFC5-47C0-9841-7D43F9CE8552}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31E3FE64-90DF-48DD-81A5-A35FB20B0793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31E3FE64-90DF-48DD-81A5-A35FB20B0793}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31E3FE64-90DF-48DD-81A5-A35FB20B0793}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31E3FE64-90DF-48DD-81A5-A35FB20B0793}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BE9E917-2A65-446A-BDE0-E3952BA42BB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BE9E917-2A65-446A-BDE0-E3952BA42BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BE9E917-2A65-446A-BDE0-E3952BA42BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BE9E917-2A65-446A-BDE0-E3952BA42BB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84277B4E-78E8-4BC5-A47F-A30C83420653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84277B4E-78E8-4BC5-A47F-A30C83420653}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84277B4E-78E8-4BC5-A47F-A30C83420653}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84277B4E-78E8-4BC5-A47F-A30C83420653}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
