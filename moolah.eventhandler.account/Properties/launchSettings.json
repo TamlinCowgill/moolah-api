@@ -3,27 +3,22 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:18003/",
-      "sslPort": 44303
+      "applicationUrl": "http://localhost:18012/",
+      "sslPort": 44302
     }
   },
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "api/transactions",
+      "launchUrl": "api/accounts",
       "environmentVariables": {
-        "moolah_transaction_queue_url": "https://sqs.ap-southeast-2.amazonaws.com/929670776372/moolah-transaction-queue",
-        "moolah_transaction_events_arn": "arn:aws:sns:ap-southeast-2:929670776372:moolah_transaction_events",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "moolah.api.transaction": {
+    "moolah.api.account": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "moolah_transaction_queue_url": "https://sqs.ap-southeast-2.amazonaws.com/929670776372/moolah-transaction-queue",
-        "moolah_transaction_events_arn": "arn:aws:sns:ap-southeast-2:929670776372:moolah_transaction_events",
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "https://localhost:5001;http://localhost:5000"

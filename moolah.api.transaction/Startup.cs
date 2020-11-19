@@ -1,4 +1,5 @@
 using Amazon.DynamoDBv2.DataModel;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -26,16 +27,20 @@ namespace moolah.api.transaction
             services.AddDefaultAWSOptions(Configuration.GetAWSOptions());
 
             services.AddControllers().AddNewtonsoftJson();
-
             // Add S3 and DynamoDB to the ASP.NET Core dependency injection framework.
-            //services.AddAWSService<Amazon.S3.IAmazonS3>();
             services.AddAWSService<Amazon.DynamoDBv2.IAmazonDynamoDB>();
+            services.AddAWSService<Amazon.SQS.IAmazonSQS>();
+            services.AddAWSService<Amazon.SimpleNotificationService.IAmazonSimpleNotificationService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
-
+            services.AddAutoMapper(typeof(Startup));
+            
             services.AddSingleton<IDynamoDBContext, DynamoDBContext>();
             services.AddSingleton<ITransactionService, TransactionService>();
+            services.AddSingleton<ITransactionPublishService, TransactionPublishService>();
+            services.AddSingleton<IMapper, Mapper>();
         }
+        
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

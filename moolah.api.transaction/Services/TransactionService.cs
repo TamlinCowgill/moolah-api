@@ -12,10 +12,12 @@ namespace moolah.api.transaction.Services
     public class TransactionService : ITransactionService
     {
         private readonly IDynamoDBContext _dbContext;
+        private readonly ITransactionPublishService _transactionPublishService;
 
-        public TransactionService(IDynamoDBContext dbContext)
+        public TransactionService(IDynamoDBContext dbContext, ITransactionPublishService transactionPublishService)
         {
             _dbContext = dbContext;
+            _transactionPublishService = transactionPublishService;
         }
 
         public IEnumerable<Transaction> GetAll()
@@ -64,6 +66,8 @@ namespace moolah.api.transaction.Services
 
             _dbContext.SaveAsync(transaction);
 
+            _transactionPublishService.PublishTransactionCreatedEvent(transaction);
+
             return transaction;
         }
 
@@ -86,5 +90,7 @@ namespace moolah.api.transaction.Services
             if (string.IsNullOrWhiteSpace(transaction.AccountId)) throw new BadRequestMissingValueException("transaction.accountid");
             if (string.IsNullOrWhiteSpace(transaction.Type)) throw new BadRequestMissingValueException("transaction.type");
         }
+
+
     }
 }
