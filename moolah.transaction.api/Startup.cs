@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using moolah.transaction.api.Services;
+using Moolah.Transaction.Core.Services;
 
-namespace moolah.transaction.api
+namespace Moolah.Transaction.Api
 {
     public class Startup
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace moolah.customer.api.Helpers
+namespace Moolah.Customer.Core.Helpers
 {
     public static class DbIdentity
     {

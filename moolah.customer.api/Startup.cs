@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using moolah.customer.api.Services;
+using Moolah.Customer.Core.Services;
 
-namespace moolah.customer.api
+namespace Moolah.Customer.Api
 {
     public class Startup
     {

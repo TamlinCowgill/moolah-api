@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using moolah.transaction.api.Domain;
-using moolah.transaction.api.Exceptions;
-using moolah.transaction.api.Helpers;
-using moolah.transaction.api.Services;
+using Moolah.Transaction.Api.Exceptions;
+using Moolah.Transaction.Api.Helpers;
+using Moolah.Transaction.Core.Services;
 
-namespace moolah.transaction.api.Controllers
+namespace Moolah.Transaction.Api.Controllers
 {
     [TypeFilter(typeof(CustomExceptionFilter))]
     [Route("api/[controller]")]
@@ -34,13 +33,13 @@ namespace moolah.transaction.api.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateTransaction([FromBody] Transaction transaction)
+        public IActionResult CreateTransaction([FromBody] Core.Domain.Transaction transaction)
         {
             return Created($"api/transactions/{transaction.TransactionId}", _transactionService.CreateTransaction(transaction));
         }
 
         [HttpPut("{transactionId}")]
-        public IActionResult UpdateTransaction(string transactionId, [FromBody] Transaction transaction)
+        public IActionResult UpdateTransaction(string transactionId, [FromBody] Core.Domain.Transaction transaction)
         {
             if (transaction == null) return BadRequest(nameof(transaction));
             if (transactionId != transaction.TransactionId) return BadRequest(nameof(transactionId));
@@ -49,7 +48,7 @@ namespace moolah.transaction.api.Controllers
         }
 
         [HttpPatch("{transactionId}")]
-        public IActionResult PatchTransaction(string transactionId, [FromBody] JsonPatchDocument<Transaction> patchData)
+        public IActionResult PatchTransaction(string transactionId, [FromBody] JsonPatchDocument<Core.Domain.Transaction> patchData)
         {
             var transaction = _transactionService.GetTransaction(transactionId);
             if (transaction == null) return NotFound();

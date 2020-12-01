@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
-using moolah.transaction.api.Domain;
-using moolah.transaction.api.Exceptions;
-using moolah.transaction.api.Helpers;
+using Moolah.Transaction.Core.Helpers;
 
-namespace moolah.transaction.api.Services
+namespace Moolah.Transaction.Core.Services
 {
     public class TransactionService : ITransactionService
     {
@@ -20,34 +18,34 @@ namespace moolah.transaction.api.Services
             _transactionPublishService = transactionPublishService;
         }
 
-        public IEnumerable<Transaction> GetAll()
+        public IEnumerable<Domain.Transaction> GetAll()
         {
-            var asyncSearch = _dbContext.ScanAsync<Transaction>(new List<ScanCondition>());
+            var asyncSearch = _dbContext.ScanAsync<Domain.Transaction>(new List<ScanCondition>());
             var task = asyncSearch.GetRemainingAsync();
             Task.WaitAll(task);
 
             return task.Result;
         }
 
-        public IEnumerable<Transaction> GetTransactionForAccount(string accountId)
+        public IEnumerable<Domain.Transaction> GetTransactionForAccount(string accountId)
         {
-            var asyncSearch = _dbContext.ScanAsync<Transaction>(new[] { new ScanCondition("AccountId", ScanOperator.Equal, accountId) });
+            var asyncSearch = _dbContext.ScanAsync<Domain.Transaction>(new[] { new ScanCondition("AccountId", ScanOperator.Equal, accountId) });
             var task = asyncSearch.GetRemainingAsync();
             Task.WaitAll(task);
 
             return task.Result;
         }
 
-        public Transaction GetTransaction(string transactionId)
+        public Domain.Transaction GetTransaction(string transactionId)
         {
-            var task = _dbContext.LoadAsync<Transaction>(transactionId);
+            var task = _dbContext.LoadAsync<Domain.Transaction>(transactionId);
 
             Task.WaitAll(task);
 
             return task.Result;
         }
 
-        public Transaction CreateTransaction(Transaction transaction)
+        public Domain.Transaction CreateTransaction(Domain.Transaction transaction)
         {
             Validate(transaction);
 
@@ -58,7 +56,9 @@ namespace moolah.transaction.api.Services
             }
             else
             {
-                if (GetTransaction(transaction.TransactionId) != null) throw new AlreadyExistsException("transaction", "transactionid", transaction.TransactionId);
+                //if (GetTransaction(transaction.TransactionId) != null) throw new AlreadyExistsException("transaction", "transactionid", transaction.TransactionId);
+                if (GetTransaction(transaction.TransactionId) != null)
+                    throw new Exception("Transaction already exists");
             }
 
             transaction.DateCreated = DateTime.Now;
@@ -71,7 +71,7 @@ namespace moolah.transaction.api.Services
             return transaction;
         }
 
-        public Transaction UpdateTransaction(Transaction transaction)
+        public Domain.Transaction UpdateTransaction(Domain.Transaction transaction)
         {
             Validate(transaction);
 
@@ -84,11 +84,11 @@ namespace moolah.transaction.api.Services
             return transaction;
         }
 
-        private void Validate(Transaction transaction)
+        private void Validate(Domain.Transaction transaction)
         {
-            if (transaction == null) throw new BadRequestMissingValueException("transaction");
-            if (string.IsNullOrWhiteSpace(transaction.AccountId)) throw new BadRequestMissingValueException("transaction.accountid");
-            if (string.IsNullOrWhiteSpace(transaction.Type)) throw new BadRequestMissingValueException("transaction.type");
+            if (transaction == null) throw new Exception();// BadRequestMissingValueException("transaction");
+            if (string.IsNullOrWhiteSpace(transaction.AccountId)) throw new Exception();//BadRequestMissingValueException("transaction.accountid");
+            if (string.IsNullOrWhiteSpace(transaction.Type)) throw new Exception();//BadRequestMissingValueException("transaction.type");
         }
 
 

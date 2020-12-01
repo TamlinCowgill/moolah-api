@@ -1,4 +1,4 @@
-﻿namespace moolah.transaction.api.Domain
+﻿namespace Moolah.Transaction.Core.Domain
 {
     public class TransactionCreatedEvent : Transaction
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 
-namespace moolah.transaction.api.Exceptions
+namespace Moolah.Transaction.Api.Exceptions
 {
     public class BadRequestInvalidValueException : Exception, IApiException
     {

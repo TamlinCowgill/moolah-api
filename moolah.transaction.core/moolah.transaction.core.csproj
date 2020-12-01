@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <AWSProjectType>Lambda</AWSProjectType>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Moolah.Transaction.Core</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+    <PackageReference Include="AWSSDK.Core" Version="3.5.1.42" />
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.5.4.1" />
+    <PackageReference Include="AWSSDK.S3" Version="3.3.110.62" />
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.100.1" />
+    <PackageReference Include="Amazon.Lambda.AspNetCoreServer" Version="5.1.1" />
+    <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.5.1.13" />
+    <PackageReference Include="AWSSDK.SQS" Version="3.5.0.42" />
+  </ItemGroup>
+</Project>

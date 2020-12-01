@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 
-namespace moolah.customer.api.Exceptions
+namespace Moolah.Customer.Api.Exceptions
 {
     public class NotFoundException : Exception, IApiException
     {

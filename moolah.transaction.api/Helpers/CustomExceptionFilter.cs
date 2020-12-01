@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using moolah.transaction.api.Exceptions;
+using Moolah.Transaction.Api.Exceptions;
 
-namespace moolah.transaction.api.Helpers
+namespace Moolah.Transaction.Api.Helpers
 {
     public class CustomExceptionFilter : IExceptionFilter
     {

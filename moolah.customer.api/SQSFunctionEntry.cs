@@ -4,7 +4,7 @@ using Amazon.Lambda.Core;
 using Amazon.Lambda.SQSEvents;
 
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
-namespace moolah.customer.api
+namespace Moolah.Customer.Api
 {
     public class SQSFunctionEntry
     {

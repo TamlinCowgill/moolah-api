@@ -6,9 +6,9 @@ using Amazon.SimpleNotificationService;
 using Amazon.SimpleNotificationService.Model;
 using Amazon.SQS;
 using AutoMapper;
-using moolah.transaction.api.Domain;
+using Moolah.Transaction.Core.Domain;
 
-namespace moolah.transaction.api.Services
+namespace Moolah.Transaction.Core.Services
 {
     public class TransactionPublishService : ITransactionPublishService
     {
@@ -23,7 +23,7 @@ namespace moolah.transaction.api.Services
             _mapper = mapper;
         }
 
-        public void PublishTransactionCreatedEvent(Transaction transaction)
+        public void PublishTransactionCreatedEvent(Domain.Transaction transaction)
         {
             var transactionCreatedEvent = _mapper.Map<TransactionCreatedEvent>(transaction);
             PublishTransactionCreatedSnsEvent(transactionCreatedEvent);

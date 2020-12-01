@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Amazon.DynamoDBv2.DataModel;
 
-namespace moolah.transaction.api.Domain
+namespace Moolah.Transaction.Core.Domain
 {
     [DynamoDBTable("Moolah.Transactions")]
     public class Transaction

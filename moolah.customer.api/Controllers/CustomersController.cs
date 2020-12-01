@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using moolah.customer.api.Domain;
-using moolah.customer.api.Exceptions;
-using moolah.customer.api.Helpers;
-using moolah.customer.api.Services;
+using Moolah.Customer.Api.Exceptions;
+using Moolah.Customer.Api.Helpers;
+using Moolah.Customer.Core.Services;
 
-namespace moolah.customer.api.Controllers
+namespace Moolah.Customer.Api.Controllers
 {
     [TypeFilter(typeof(CustomExceptionFilter))]
     [Route("api/[controller]")]
@@ -34,13 +33,13 @@ namespace moolah.customer.api.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateCustomer([FromBody] Customer customer)
+        public IActionResult CreateCustomer([FromBody] Core.Domain.Customer customer)
         {
             return Created($"api/customers/{customer.CustomerId}", _customerService.CreateCustomer(customer));
         }
 
         [HttpPut("{customerId}")]
-        public IActionResult UpdateCustomer(string customerId, [FromBody] Customer customer)
+        public IActionResult UpdateCustomer(string customerId, [FromBody] Core.Domain.Customer customer)
         {
             if (customer == null) return BadRequest(nameof(customer));
             if (customerId != customer.CustomerId) return BadRequest(nameof(customerId));
@@ -49,7 +48,7 @@ namespace moolah.customer.api.Controllers
         }
 
         [HttpPatch("{customerId}")]
-        public IActionResult PatchCustomer(string customerId, [FromBody] JsonPatchDocument<Customer> patchData)
+        public IActionResult PatchCustomer(string customerId, [FromBody] JsonPatchDocument<Core.Domain.Customer> patchData)
         {
             var customer = _customerService.GetCustomer(customerId);
             if (customer == null) return NotFound();
