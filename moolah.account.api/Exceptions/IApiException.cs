@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace moolah.account.api.Exceptions
+namespace Moolah.Account.Api.Exceptions
 {
     public interface IApiException
     {

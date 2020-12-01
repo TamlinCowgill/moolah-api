@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.Lambda.Core;
-using moolah.account.api.Domain;
-using moolah.account.api.Exceptions;
-using moolah.account.api.Helpers;
-using moolah.account.api.Models;
+using Moolah.Account.Core.Helpers;
+using Moolah.Account.Core.Models;
 
-namespace moolah.account.api.Services
+//using moolah.account.api.Exceptions;
+
+namespace Moolah.Account.Core.Services
 {
     public class AccountService : IAccountService
     {
@@ -21,18 +21,18 @@ namespace moolah.account.api.Services
             _dbContext = dbContext;
         }
 
-        public IEnumerable<Account> GetAll()
+        public IEnumerable<Domain.Account> GetAll()
         {
-            var asyncSearch = _dbContext.ScanAsync<Account>(new List<ScanCondition>());
+            var asyncSearch = _dbContext.ScanAsync<Domain.Account>(new List<ScanCondition>());
             var task = asyncSearch.GetRemainingAsync();
             Task.WaitAll(task);
 
             return task.Result;
         }
 
-        public IEnumerable<Account> GetAccountsForCustomerId(string customerId)
+        public IEnumerable<Domain.Account> GetAccountsForCustomerId(string customerId)
         {
-            var asyncSearch = _dbContext.ScanAsync<Account>(new[] { new ScanCondition("CustomerId", ScanOperator.Equal, customerId) });
+            var asyncSearch = _dbContext.ScanAsync<Domain.Account>(new[] { new ScanCondition("CustomerId", ScanOperator.Equal, customerId) });
             var task = asyncSearch.GetRemainingAsync();
             Task.WaitAll(task);
 
@@ -79,16 +79,16 @@ namespace moolah.account.api.Services
             UpdateAccount(account);
         }
 
-        public Account GetAccount(string accountId)
+        public Domain.Account GetAccount(string accountId)
         {
-            var task = _dbContext.LoadAsync<Account>(accountId);
+            var task = _dbContext.LoadAsync<Domain.Account>(accountId);
 
             Task.WaitAll(task);
 
             return task.Result;
         }
 
-        public Account CreateAccount(Account account)
+        public Domain.Account CreateAccount(Domain.Account account)
         {
             Validate(account);
 
@@ -99,7 +99,7 @@ namespace moolah.account.api.Services
             }
             else
             {
-                if (GetAccount(account.AccountId) != null) throw new AlreadyExistsException("account", "accountid", account.AccountId);
+                //if (GetAccount(account.AccountId) != null) throw new AlreadyExistsException("account", "accountid", account.AccountId);
             }
 
             account.DateCreated = DateTime.Now;
@@ -111,7 +111,7 @@ namespace moolah.account.api.Services
             return account;
         }
 
-        public Account UpdateAccount(Account account)
+        public Domain.Account UpdateAccount(Domain.Account account)
         {
             Validate(account);
 
@@ -122,19 +122,19 @@ namespace moolah.account.api.Services
             return account;
         }
 
-        private void Validate(Account account)
+        private void Validate(Domain.Account account)
         {
-            if (account == null) throw new BadRequestMissingValueException("account");
-            if (string.IsNullOrWhiteSpace(account.Name)) throw new BadRequestMissingValueException("account.name");
-            if (string.IsNullOrWhiteSpace(account.CustomerId)) throw new BadRequestMissingValueException("account.customerid");
+            //if (account == null) throw new BadRequestMissingValueException("account");
+            //if (string.IsNullOrWhiteSpace(account.Name)) throw new BadRequestMissingValueException("account.name");
+            //if (string.IsNullOrWhiteSpace(account.CustomerId)) throw new BadRequestMissingValueException("account.customerid");
         }
 
         private void Validate(Transaction transaction)
         {
-            if (transaction == null) throw new BadRequestMissingValueException("transaction");
-            if (string.IsNullOrWhiteSpace(transaction.TransactionId)) throw new BadRequestMissingValueException("transaction.TransactionId");
-            if (string.IsNullOrWhiteSpace(transaction.AccountId)) throw new BadRequestMissingValueException("transaction.AccountId");
-            if (string.IsNullOrWhiteSpace(transaction.Type)) throw new BadRequestMissingValueException("transaction.Type");
+            //    if (transaction == null) throw new BadRequestMissingValueException("transaction");
+            //    if (string.IsNullOrWhiteSpace(transaction.TransactionId)) throw new BadRequestMissingValueException("transaction.TransactionId");
+            //    if (string.IsNullOrWhiteSpace(transaction.AccountId)) throw new BadRequestMissingValueException("transaction.AccountId");
+            //    if (string.IsNullOrWhiteSpace(transaction.Type)) throw new BadRequestMissingValueException("transaction.Type");
         }
     }
 }

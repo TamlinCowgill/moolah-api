@@ -11,10 +11,22 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.customer.api", "mool
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.transaction.api", "moolah.transaction.api\moolah.transaction.api.csproj", "{84277B4E-78E8-4BC5-A47F-A30C83420653}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{664D159C-3676-45E4-A120-BC982E1AB72B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solutionroot", ".solutionroot", "{664D159C-3676-45E4-A120-BC982E1AB72B}"
 	ProjectSection(SolutionItems) = preProject
 		buildspec.yml = buildspec.yml
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.account.eventhandler", "moolah.account.eventhandler\moolah.account.eventhandler.csproj", "{6358F30D-0ABD-4002-AF4C-5B692B007FD4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.account.core", "moolah.account.core\moolah.account.core.csproj", "{DC90E2A7-F547-4BB8-A231-0EA40581B057}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Account", "Account", "{CC124838-4FB2-49FC-B6C5-04137C35B11F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Customer", "Customer", "{B331A98A-B65D-4D64-80D2-993795B9A12D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Transaction", "Transaction", "{968AC1FB-3FB7-4121-8CE9-DAF152A86CCA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{00A2E687-2F7E-487F-B3C2-81F0A3B44052}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,9 +50,25 @@ Global
 		{84277B4E-78E8-4BC5-A47F-A30C83420653}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84277B4E-78E8-4BC5-A47F-A30C83420653}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84277B4E-78E8-4BC5-A47F-A30C83420653}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6358F30D-0ABD-4002-AF4C-5B692B007FD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6358F30D-0ABD-4002-AF4C-5B692B007FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6358F30D-0ABD-4002-AF4C-5B692B007FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6358F30D-0ABD-4002-AF4C-5B692B007FD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC90E2A7-F547-4BB8-A231-0EA40581B057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC90E2A7-F547-4BB8-A231-0EA40581B057}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC90E2A7-F547-4BB8-A231-0EA40581B057}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC90E2A7-F547-4BB8-A231-0EA40581B057}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A18740DB-FFC5-47C0-9841-7D43F9CE8552} = {00A2E687-2F7E-487F-B3C2-81F0A3B44052}
+		{31E3FE64-90DF-48DD-81A5-A35FB20B0793} = {CC124838-4FB2-49FC-B6C5-04137C35B11F}
+		{3BE9E917-2A65-446A-BDE0-E3952BA42BB9} = {B331A98A-B65D-4D64-80D2-993795B9A12D}
+		{84277B4E-78E8-4BC5-A47F-A30C83420653} = {968AC1FB-3FB7-4121-8CE9-DAF152A86CCA}
+		{6358F30D-0ABD-4002-AF4C-5B692B007FD4} = {CC124838-4FB2-49FC-B6C5-04137C35B11F}
+		{DC90E2A7-F547-4BB8-A231-0EA40581B057} = {CC124838-4FB2-49FC-B6C5-04137C35B11F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E6B285C7-DB7C-4D86-B25D-FCF6C8E8DD46}

@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Moolah.Account.Core.Services;
 using moolah.common.Services;
 
-namespace Moolah.Account.Api
+namespace Moolah.Account.EventHandler
 {
     public class Startup
     {
@@ -23,7 +23,7 @@ namespace Moolah.Account.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDefaultAWSOptions(Configuration.GetAWSOptions());
-            services.AddControllers().AddNewtonsoftJson();
+            //services.AddControllers().AddNewtonsoftJson();
             services.AddAWSService<Amazon.DynamoDBv2.IAmazonDynamoDB>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
             services.AddSingleton<IDynamoDBContext, DynamoDBContext>();

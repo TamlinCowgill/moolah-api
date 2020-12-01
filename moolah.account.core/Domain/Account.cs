@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Amazon.DynamoDBv2.DataModel;
-using moolah.account.api.Models;
+using Moolah.Account.Core.Models;
 
-namespace moolah.account.api.Domain
+namespace Moolah.Account.Core.Domain
 {
     [DynamoDBTable("Moolah.Accounts")]
     public class Account

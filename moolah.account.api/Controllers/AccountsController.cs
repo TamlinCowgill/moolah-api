@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using moolah.account.api.Domain;
-using moolah.account.api.Exceptions;
-using moolah.account.api.Helpers;
-using moolah.account.api.Services;
+using Moolah.Account.Api.Exceptions;
+using Moolah.Account.Api.Helpers;
+using Moolah.Account.Core.Services;
 
-namespace moolah.account.api.Controllers
+namespace Moolah.Account.Api.Controllers
 {
     [TypeFilter(typeof(CustomExceptionFilter))]
     [Route("api/[controller]")]
@@ -34,13 +33,13 @@ namespace moolah.account.api.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateAccount([FromBody] Account account)
+        public IActionResult CreateAccount([FromBody] Moolah.Account.Core.Domain.Account account)
         {
             return Created($"api/accounts/{account.AccountId}", _accountService.CreateAccount(account));
         }
 
         [HttpPut("{accountId}")]
-        public IActionResult UpdateAccount(string accountId, [FromBody] Account account)
+        public IActionResult UpdateAccount(string accountId, [FromBody] Moolah.Account.Core.Domain.Account account)
         {
             if (account == null) throw new BadRequestMissingValueException("account");
             if (accountId != account.AccountId) throw new BadRequestInvalidValueException("accountId");
@@ -49,7 +48,7 @@ namespace moolah.account.api.Controllers
         }
 
         [HttpPatch("{accountId}")]
-        public IActionResult PatchAccount(string accountId, [FromBody] JsonPatchDocument<Account> patchData)
+        public IActionResult PatchAccount(string accountId, [FromBody] JsonPatchDocument<Moolah.Account.Core.Domain.Account> patchData)
         {
             var account = _accountService.GetAccount(accountId);
             if (account == null) return NotFound();

@@ -2,7 +2,7 @@
 using Amazon.Lambda.Core;
 using Amazon.Lambda.SQSEvents;
 
-namespace moolah.account.api.SQS
+namespace Moolah.Account.EventHandler
 {
     public interface ISQSFunctionHandler
     {

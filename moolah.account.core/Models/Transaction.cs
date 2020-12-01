@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace moolah.account.api.Models
+namespace Moolah.Account.Core.Models
 {
     public class Transaction
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace moolah.account.api.Models
+namespace Moolah.Account.Core.Models
 {
     public class TransactionRunTotal
     {

@@ -4,12 +4,12 @@ using System.Reflection;
 using System.Text.Json;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.SQSEvents;
-using moolah.account.api.Models;
-using moolah.account.api.Services;
+using Moolah.Account.Core.Models;
+using Moolah.Account.Core.Services;
 using moolah.common.Domain;
 using moolah.common.Services;
 
-namespace moolah.account.api.SQS
+namespace Moolah.Account.EventHandler
 {
     public class SQSFunctionHandler 
     {

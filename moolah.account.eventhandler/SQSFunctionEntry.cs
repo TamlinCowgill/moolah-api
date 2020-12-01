@@ -7,11 +7,11 @@ using Amazon.Extensions.NETCore.Setup;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.SQSEvents;
 using Microsoft.Extensions.DependencyInjection;
-using moolah.account.api.Services;
+using Moolah.Account.Core.Services;
 using moolah.common.Services;
 
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
-namespace moolah.account.api.SQS
+namespace Moolah.Account.EventHandler
 {
     public class SQSFunctionEntry
     {

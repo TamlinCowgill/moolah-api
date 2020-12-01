@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Moolah.Account.Api;
 
 namespace moolah.account.api
 {
@@ -7,7 +8,7 @@ namespace moolah.account.api
     /// This class extends from APIGatewayProxyFunction which contains the method FunctionHandlerAsync which is the 
     /// actual Lambda function entry point. The Lambda handler field should be set to
     /// 
-    /// moolah.api.account::moolah.api.account.LambdaEntryPoint::FunctionHandlerAsync
+    /// moolah.account.api::moolah.account.api.LambdaEntryPoint::FunctionHandlerAsync
     /// </summary>
     public class LambdaEntryPoint :
 
