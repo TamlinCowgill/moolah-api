@@ -29,6 +29,7 @@ namespace Moolah.Account.Api
             services.AddSingleton<IDynamoDBContext, DynamoDBContext>();
             services.AddSingleton<IAccountService, AccountService>();
             services.AddSingleton<IItemEventService, ItemEventService>();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
@@ -45,10 +46,23 @@ namespace Moolah.Account.Api
 
             app.UseAuthorization();
 
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API");
+                c.RoutePrefix = "api/help/accounts";
+            });
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+
         }
     }
 }
