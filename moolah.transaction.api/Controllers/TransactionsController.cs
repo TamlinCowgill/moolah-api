@@ -7,7 +7,7 @@ using Moolah.Transaction.Core.Services;
 namespace Moolah.Transaction.Api.Controllers
 {
     [TypeFilter(typeof(CustomExceptionFilter))]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class TransactionsController : Controller
     {
         private readonly ITransactionService _transactionService;

@@ -7,7 +7,7 @@ using Moolah.Account.Core.Services;
 namespace Moolah.Account.Api.Controllers
 {
     [TypeFilter(typeof(CustomExceptionFilter))]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class AccountsController : Controller
     {
         private readonly IAccountService _accountService;

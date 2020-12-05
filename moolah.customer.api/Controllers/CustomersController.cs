@@ -7,7 +7,7 @@ using Moolah.Customer.Core.Services;
 namespace Moolah.Customer.Api.Controllers
 {
     [TypeFilter(typeof(CustomExceptionFilter))]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class CustomersController : Controller
     {
         private readonly ICustomerService _customerService;
