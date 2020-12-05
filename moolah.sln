@@ -32,6 +32,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.customer.core", "moo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.transaction.core", "moolah.transaction.core\moolah.transaction.core.csproj", "{A10AF995-B04D-4915-9E3A-D396BCB5FCD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "moolah.website.react.template", "moolah.website.react.template\moolah.website.react.template.csproj", "{73162F19-61DB-4A54-AD37-1FFB4B790FCB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,10 @@ Global
 		{A10AF995-B04D-4915-9E3A-D396BCB5FCD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A10AF995-B04D-4915-9E3A-D396BCB5FCD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A10AF995-B04D-4915-9E3A-D396BCB5FCD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73162F19-61DB-4A54-AD37-1FFB4B790FCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73162F19-61DB-4A54-AD37-1FFB4B790FCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73162F19-61DB-4A54-AD37-1FFB4B790FCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73162F19-61DB-4A54-AD37-1FFB4B790FCB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
