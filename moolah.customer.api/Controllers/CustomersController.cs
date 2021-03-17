@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Moolah.Common;
 using Moolah.Customer.Api.Exceptions;
-using Moolah.Customer.Api.Helpers;
 using Moolah.Customer.Core.Services;
 
 namespace Moolah.Customer.Api.Controllers
@@ -35,7 +35,8 @@ namespace Moolah.Customer.Api.Controllers
         [HttpPost]
         public IActionResult CreateCustomer([FromBody] Core.Domain.Customer customer)
         {
-            return Created($"api/customers/{customer.CustomerId}", _customerService.CreateCustomer(customer));
+            var newCustomer = _customerService.CreateCustomer(customer);
+            return Created($"{Request.Scheme}://{Request.Host}{Request.Path}/{customer.CustomerId}", newCustomer);
         }
 
         [HttpPut("{customerId}")]

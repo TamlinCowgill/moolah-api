@@ -7,8 +7,7 @@ using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.Lambda.Core;
 using Moolah.Account.Core.Helpers;
 using Moolah.Account.Core.Models;
-
-//using moolah.account.api.Exceptions;
+using Moolah.Common;
 
 namespace Moolah.Account.Core.Services
 {
@@ -44,7 +43,7 @@ namespace Moolah.Account.Core.Services
             Validate(transaction);
 
             var account = GetAccount(transaction.AccountId);
-            if (account == null) throw new ArgumentNullException("Unknown account id: " + transaction.AccountId);
+            if (account == null) throw new MoolahException(RpcStatusCode.NOT_FOUND, nameof(transaction.AccountId) + ":" + transaction.AccountId);
 
             account.TransactionSummary ??= new List<TransactionRunTotal>();
 
@@ -99,7 +98,7 @@ namespace Moolah.Account.Core.Services
             }
             else
             {
-                //if (GetAccount(account.AccountId) != null) throw new AlreadyExistsException("account", "accountid", account.AccountId);
+                if (GetAccount(account.AccountId) != null) throw new MoolahException(RpcStatusCode.ALREADY_EXISTS, nameof(account.AccountId) + ":" + account.AccountId);
             }
 
             account.DateCreated = DateTime.Now;
@@ -124,17 +123,17 @@ namespace Moolah.Account.Core.Services
 
         private void Validate(Domain.Account account)
         {
-            //if (account == null) throw new BadRequestMissingValueException("account");
-            //if (string.IsNullOrWhiteSpace(account.Name)) throw new BadRequestMissingValueException("account.name");
-            //if (string.IsNullOrWhiteSpace(account.CustomerId)) throw new BadRequestMissingValueException("account.customerid");
+            if (account == null) throw new MoolahException(RpcStatusCode.INVALID_ARGUMENT, "missing:" + nameof(account));
+            if (string.IsNullOrWhiteSpace(account.Name)) throw new MoolahException(RpcStatusCode.INVALID_ARGUMENT, "missing:" + nameof(account.Name));
+            if (string.IsNullOrWhiteSpace(account.CustomerId)) throw new MoolahException(RpcStatusCode.INVALID_ARGUMENT, "missing:" + nameof(account.CustomerId));
         }
 
         private void Validate(Transaction transaction)
         {
-            //    if (transaction == null) throw new BadRequestMissingValueException("transaction");
-            //    if (string.IsNullOrWhiteSpace(transaction.TransactionId)) throw new BadRequestMissingValueException("transaction.TransactionId");
-            //    if (string.IsNullOrWhiteSpace(transaction.AccountId)) throw new BadRequestMissingValueException("transaction.AccountId");
-            //    if (string.IsNullOrWhiteSpace(transaction.Type)) throw new BadRequestMissingValueException("transaction.Type");
+            if (transaction == null) throw new MoolahException(RpcStatusCode.INVALID_ARGUMENT, "missing:" + nameof(transaction));
+            if (string.IsNullOrWhiteSpace(transaction.TransactionId)) throw new MoolahException(RpcStatusCode.INVALID_ARGUMENT, "missing:" + nameof(transaction.TransactionId));
+            if (string.IsNullOrWhiteSpace(transaction.AccountId)) throw new MoolahException(RpcStatusCode.INVALID_ARGUMENT, "missing:" + nameof(transaction.AccountId));
+            if (string.IsNullOrWhiteSpace(transaction.Type)) throw new MoolahException(RpcStatusCode.INVALID_ARGUMENT, "missing:" + nameof(transaction.Type));
         }
     }
 }

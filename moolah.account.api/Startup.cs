@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Moolah.Account.Core.Services;
-using moolah.common.Services;
+using Moolah.Common.Services;
 
 namespace Moolah.Account.Api
 {

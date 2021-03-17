@@ -1,7 +1,7 @@
 ﻿using System;
 using Amazon.DynamoDBv2.DataModel;
 
-namespace moolah.common.Domain
+namespace Moolah.Common.Domain
 {
     [DynamoDBTable("Moolah.Control.ItemEventProcessing")]
     public class ItemEvent

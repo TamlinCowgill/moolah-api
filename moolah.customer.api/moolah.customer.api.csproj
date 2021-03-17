@@ -22,6 +22,7 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\moolah.common\moolah.common.csproj" />
     <ProjectReference Include="..\moolah.customer.core\moolah.customer.core.csproj" />
   </ItemGroup>
 </Project>

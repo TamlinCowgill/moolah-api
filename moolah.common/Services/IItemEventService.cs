@@ -1,6 +1,6 @@
-﻿using moolah.common.Domain;
+﻿using Moolah.Common.Domain;
 
-namespace moolah.common.Services
+namespace Moolah.Common.Services
 {
     public interface IItemEventService
     {

@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.Lambda.Core;
-using moolah.common.Domain;
+using Moolah.Common.Domain;
 
-namespace moolah.common.Services
+namespace Moolah.Common.Services
 {
     public class ItemEventService : IItemEventService
     {

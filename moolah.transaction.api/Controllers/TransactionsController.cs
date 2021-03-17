@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Moolah.Common;
 using Moolah.Transaction.Api.Exceptions;
-using Moolah.Transaction.Api.Helpers;
 using Moolah.Transaction.Core.Services;
 
 namespace Moolah.Transaction.Api.Controllers
@@ -35,7 +35,8 @@ namespace Moolah.Transaction.Api.Controllers
         [HttpPost]
         public IActionResult CreateTransaction([FromBody] Core.Domain.Transaction transaction)
         {
-            return Created($"api/transactions/{transaction.TransactionId}", _transactionService.CreateTransaction(transaction));
+            var newTransaction = _transactionService.CreateTransaction(transaction);
+            return Created($"{Request.Scheme}://{Request.Host}{Request.Path}/{transaction.TransactionId}", newTransaction);
         }
 
         [HttpPut("{transactionId}")]

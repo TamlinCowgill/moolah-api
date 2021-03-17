@@ -11,7 +11,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/transactions",
+      "launchUrl": "transactions",
       "environmentVariables": {
         "moolah_transaction_queue_url": "https://sqs.ap-southeast-2.amazonaws.com/929670776372/moolah-transaction-queue",
         "moolah_transaction_events_arn": "arn:aws:sns:ap-southeast-2:929670776372:moolah_transaction_events",

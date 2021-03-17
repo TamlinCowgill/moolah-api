@@ -6,8 +6,8 @@ using Amazon.Lambda.Core;
 using Amazon.Lambda.SQSEvents;
 using Moolah.Account.Core.Models;
 using Moolah.Account.Core.Services;
-using moolah.common.Domain;
-using moolah.common.Services;
+using Moolah.Common.Domain;
+using Moolah.Common.Services;
 
 namespace Moolah.Account.EventHandler
 {

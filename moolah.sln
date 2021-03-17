@@ -14,6 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solutionroot", ".solutionroot", "{664D159C-3676-45E4-A120-BC982E1AB72B}"
 	ProjectSection(SolutionItems) = preProject
 		buildspec.yml = buildspec.yml
+		moolah.common\getset.snippet = moolah.common\getset.snippet
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.account.eventhandler", "moolah.account.eventhandler\moolah.account.eventhandler.csproj", "{6358F30D-0ABD-4002-AF4C-5B692B007FD4}"
@@ -32,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.customer.core", "moo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.transaction.core", "moolah.transaction.core\moolah.transaction.core.csproj", "{A10AF995-B04D-4915-9E3A-D396BCB5FCD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "moolah.website.react.template", "moolah.website.react.template\moolah.website.react.template.csproj", "{73162F19-61DB-4A54-AD37-1FFB4B790FCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "moolah.website.react.template", "moolah.website.react.template\moolah.website.react.template.csproj", "{73162F19-61DB-4A54-AD37-1FFB4B790FCB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

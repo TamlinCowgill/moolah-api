@@ -8,7 +8,7 @@ using Amazon.Lambda.Core;
 using Amazon.Lambda.SQSEvents;
 using Microsoft.Extensions.DependencyInjection;
 using Moolah.Account.Core.Services;
-using moolah.common.Services;
+using Moolah.Common.Services;
 
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
 namespace Moolah.Account.EventHandler
